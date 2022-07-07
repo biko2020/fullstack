@@ -25,9 +25,7 @@ const Total = (props) => {
   const e2 = props.parts[1].exercises;
   const e3 = props.parts[2].exercises;
 
-  const t = [e1, e2, e3];
-
-  var sum = t[0] + t[1] + t[2];
+  var sum = e1 + e2 + e3;
 
   return <div>Total: {sum}</div>;
 };
