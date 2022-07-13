@@ -5,6 +5,9 @@ const Button = ({ handleClick, text }) => (
 );
 
 const Statistics = (props) => {
+  if (props.sum === 0) {
+    return <div>No feedback given</div>;
+  }
   return (
     <div>
       <p>good {props.good}</p>
@@ -14,8 +17,8 @@ const Statistics = (props) => {
       <p>average {props.average}</p>
       <p>positive {props.positive} %</p>
     </div>
-  )
-}
+  );
+};
 
 const App = () => {
   // save clicks of each button to its own state
@@ -35,8 +38,14 @@ const App = () => {
 
       <div>
         <h1>Statistics</h1>
-        <Statistics good={good} neutral={neutral} bad={bad} sum={sum} average={average} positive={average * 100}/>
-
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          sum={sum}
+          average={average}
+          positive={average * 100}
+        />
       </div>
     </div>
   );
