@@ -1,27 +1,49 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 
-const Display = (props) => <div>{props.value}</div>
-
-const Button = (props) => (
-  <button onClick={props.handleClick}>
-    {props.text}
-    </button>
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>{text}</button>
 );
 
 const App = () => {
-  const [value, setValue] = useState(10);
+  // save clicks of each button to its own state
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
 
-  const setToValue = (newValue) => {
-    console.log("value now", newValue);
-    setValue(newValue);
+  const cliCkGood = () => {
+    const setToGood = (newValue) => {
+      setGood(newValue);
+    };
+    return setToGood(good + 1);
+  };
+
+  const cliCkNuetral = () => {
+    const setToNeutral = (newValue) => {
+      setNeutral(newValue);
+    };
+    return setNeutral(neutral + 1);
+  };
+
+  const cliClkBad = () => {
+    const setToBad = (newValue) => {
+      setBad(newValue);
+    };
+    return setToBad(bad + 1);
   };
 
   return (
     <div>
-      <Display value={value} />
-      <Button handleClick={() => setToValue(1000)} text="thousand"/>
-      <Button handleClick={() => setToValue(0)} text="reset"/>
-      <Button handleClick={() => setToValue(value + 1)} text="increment" />
+      <h1>give feedback </h1>
+      <Button handleClick={() => cliCkGood()} text="good" />
+      <Button handleClick={() => cliCkNuetral()} text="neutral" />
+      <Button handleClick={() => cliClkBad()} text="Bad" />
+
+      <div>
+        <h1>Statistics</h1>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+      </div>
     </div>
   );
 };
