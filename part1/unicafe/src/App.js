@@ -10,6 +10,9 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const average = (good + neutral + bad) / 3;
+  const sum = good + neutral + bad;
+
   const cliCkGood = () => {
     const setToGood = (newValue) => {
       setGood(newValue);
@@ -21,7 +24,7 @@ const App = () => {
     const setToNeutral = (newValue) => {
       setNeutral(newValue);
     };
-    return setNeutral(neutral + 1);
+    return setToNeutral(neutral + 1);
   };
 
   const cliClkBad = () => {
@@ -43,6 +46,9 @@ const App = () => {
         <p>good {good}</p>
         <p>neutral {neutral}</p>
         <p>bad {bad}</p>
+        <p>all {sum}</p>
+        <p>average {average} </p>
+        <p>positive {average * 100} %</p>
       </div>
     </div>
   );
