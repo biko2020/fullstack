@@ -13,33 +13,12 @@ const App = () => {
   const average = (good + neutral + bad) / 3;
   const sum = good + neutral + bad;
 
-  const cliCkGood = () => {
-    const setToGood = (newValue) => {
-      setGood(newValue);
-    };
-    return setToGood(good + 1);
-  };
-
-  const cliCkNuetral = () => {
-    const setToNeutral = (newValue) => {
-      setNeutral(newValue);
-    };
-    return setToNeutral(neutral + 1);
-  };
-
-  const cliClkBad = () => {
-    const setToBad = (newValue) => {
-      setBad(newValue);
-    };
-    return setToBad(bad + 1);
-  };
-
   return (
     <div>
       <h1>give feedback </h1>
-      <Button handleClick={() => cliCkGood()} text="good" />
-      <Button handleClick={() => cliCkNuetral()} text="neutral" />
-      <Button handleClick={() => cliClkBad()} text="Bad" />
+      <Button handleClick={() => setGood(good + 1)} text="good" />
+      <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
+      <Button handleClick={() => setBad(bad + 1)} text="Bad" />
 
       <div>
         <h1>Statistics</h1>
