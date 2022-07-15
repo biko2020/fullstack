@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const Button = ({ handleClick }) => (
+const Button = ({ vote, handleClick }) => (
   <div>
+    <button onClick={vote}>vote</button>
     <button onClick={handleClick}>next anecdote</button>
   </div>
 );
@@ -18,19 +19,37 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
+  const [selectedVote, setSelectedVote] = useState(0);
+  const [points, setPoints] = useState({
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+  });
 
   function getRandomField(max) {
-    return Math.floor(Math.random() * max);
+    const random = Math.floor(Math.random() * Math.floor(max));
+    setSelectedVote(random);
+    return random;
   }
 
   const randomField = () => {
     setSelected(getRandomField(anecdotes.length));
   };
 
+  const FieldClick = () => {
+    const pointCopy = { ...points };
+    pointCopy[selectedVote] += 1;
+    setPoints(pointCopy);
+  };
   return (
     <div>
       {anecdotes[selected]}
-      <Button handleClick={randomField} />
+      <p>has {points[selectedVote]} votes</p>
+      <Button handleClick={randomField} vote={FieldClick} />
     </div>
   );
 };
