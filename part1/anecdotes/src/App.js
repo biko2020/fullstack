@@ -45,11 +45,34 @@ const App = () => {
     pointCopy[selectedVote] += 1;
     setPoints(pointCopy);
   };
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <p>has {points[selectedVote]} votes</p>
       <Button handleClick={randomField} vote={FieldClick} />
+      <h1>Anecdote with most votes</h1>
+      <p>
+        {
+          anecdotes[
+            Object.keys(anecdotes).reduce((maxPoint, minPoint) =>
+              points[maxPoint] > points[minPoint] ? maxPoint : minPoint
+            )
+          ]
+        }
+      </p>
+      <p>
+        has
+        {
+          points[
+            Object.keys(points).reduce((maxPoint, minPoint) =>
+              points[maxPoint] > points[minPoint] ? maxPoint : minPoint
+            )
+          ]
+        }{" "}
+        votes
+      </p>
     </div>
   );
 };
