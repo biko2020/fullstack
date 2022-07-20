@@ -1,8 +1,8 @@
 import React from "react";
 
 const Total = ({ total }) => {
-  const s = total.map((p) => p.exercises);
-  const totalSum = s.reduce(function (sum, order) {
+  const parts = total.map((p) => p.exercises);
+  const totalSum = parts.reduce((sum, order) => {
     return sum + order;
   });
 
