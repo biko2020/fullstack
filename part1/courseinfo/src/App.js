@@ -1,24 +1,43 @@
-import { useState } from "react";
+import React from "react";
+import Content from "./components/Content";
+import Header from "./components/Header";
 
-const App = () => {
-  const [counter, setCounter] = useState(0);
-
-  const increasByOne = () => setCounter(counter + 1);
-  const decreaseByOne = () => setCounter(counter - 1);
-  const setToZero = () => setCounter(0);
-
+const Course = ({ course }) => {
   return (
     <div>
-      <Display counter={counter} />
-      <Button onClick={increasByOne} text="Plus" />
-      <Button onClick={setToZero} text="zero" />
-      <Button onClick={decreaseByOne} text="minus" />
+      <h1>
+        <Header header={course} />
+      </h1>
+      <div>
+        <Content content={course.parts} />
+      </div>
     </div>
   );
 };
 
-const Display = ({ counter }) => <div>{counter}</div>;
+const App = () => {
+  const course = {
+    id: 1,
+    name: "Half Stack application development",
+    parts: [
+      {
+        name: "Fundamentals of React",
+        exercises: 10,
+        id: 1,
+      },
+      {
+        name: "Using props to pass data",
+        exercises: 7,
+        id: 2,
+      },
+      {
+        name: "State of a component",
+        exercises: 14,
+        id: 3,
+      },
+    ],
+  };
 
-const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
-
+  return <Course course={course} />;
+};
 export default App;
