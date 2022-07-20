@@ -1,6 +1,7 @@
 import React from "react";
 import Content from "./components/Content";
 import Header from "./components/Header";
+import Total from './components/Total';
 
 const Course = ({ course }) => {
   return (
@@ -10,6 +11,9 @@ const Course = ({ course }) => {
       </h1>
       <div>
         <Content content={course.parts} />
+      </div>
+      <div>
+        <Total total={course.parts}/>
       </div>
     </div>
   );
@@ -35,6 +39,11 @@ const App = () => {
         exercises: 14,
         id: 3,
       },
+      {
+        name: "Redux",
+        exercises: 11,
+        id: 4
+      }
     ],
   };
 
