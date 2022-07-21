@@ -1,14 +1,5 @@
 import React from "react";
-import Header from "./components/Header";
-
-const Course = ({ course }) => {
-  return (
-    <div>
-      <h1>Web development curriculum</h1>
-      <Header header={course} />
-    </div>
-  );
-};
+import Course from "./components/Course";
 
 const App = () => {
   const courses = [
